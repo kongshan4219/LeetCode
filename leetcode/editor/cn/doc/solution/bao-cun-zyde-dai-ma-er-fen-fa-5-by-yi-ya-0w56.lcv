@@ -1,0 +1,21 @@
+class Solution {
+public boolean isPerfectSquare(int num) {
+//设置边界，左闭右闭
+int left = 0;
+int right = (num+1)>>1;//可以排除一半。
+//进入循环
+while(left<=right){
+int mid = left+((right-left)>>1);
+//防止越界
+long t = (long)mid * mid;
+if(t>num){
+right = mid - 1;
+}else if(t<num){
+left = mid + 1;
+}else{
+return true;
+}
+}
+return false;
+}
+}
