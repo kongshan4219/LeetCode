@@ -39,26 +39,29 @@ class Solution {
     public void moveZeroes(int[] nums) {
         int slow = 0;
         int fast = 0;
-        //while (fast<nums.length){
-        //    if (nums[fast]==0){
-        //        fast++;
-        //    }else {
-        //        if (fast-slow>1){
-        //            nums[slow] = nums[fast];
-        //            slow++;
+        //先直接暴力for循环把题目过了，之后在优化
+        //for (int i = 0;i<nums.length;i++){
+        //    if (nums[i]==0){
+        //        for(int j = i+1;j<nums.length;j++){
+        //            if (nums[j]!=0){
+        //                nums[i] = nums[j];
+        //                nums[j] = 0;
+        //                break;
+        //            }
         //        }
         //    }
         //}
-        //先直接暴力for循环把题目过了，之后在优化
-        for (int i = 0;i<nums.length;i++){
-            if (nums[i]==0){
-                for(int j = i+1;j<nums.length;j++){
-                    if (nums[j]!=0){
-                        nums[i] = nums[j];
-                        nums[j] = 0;
-                        break;
-                    }
+
+        while (fast<nums.length){
+            if (nums[fast]!=0){
+                nums[slow] = nums[fast];
+                if (slow!=fast){
+                    nums[fast] = 0;
                 }
+                slow++;
+                fast++;
+            }else if (nums[fast]==0){
+                fast++;
             }
         }
     }
